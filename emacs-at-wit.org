@@ -1,0 +1,216 @@
+# Emacs@WIT -- October 2017 -- carriganbrollyc@wit.edu
+To view, move cursor to a star and press tab.
+* TODO emacs-at-wit WIP 
+  - [ ] 
+* Introduction (read me first):
+
+
+** What is Emacs?
+   From the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html][Manual]]: "Emacs is the extensible, customizable,
+   self-documenting real-time display editor," but that's so dry. It's
+   just that, well, honestly it's impossible to find one thing to call
+   emacs, except life-changing. Some examples:
+   - Everything is customizable. If you dont like the [[*Important%20Commands][Key Commands]],
+     change them: [[*Configuration%20and%20Customization][Configuration and Customization]]
+   - It is the best IDE you will ever use. Hands down. To the point
+     that it might ruin other IDE's for you: [[*Programming][Programming]]
+   - It acts as a better R Notebook platform than any I've seen: [[*Doing%20Math%20(R)][Doing Math (R)]
+   - It has integrated a smart, souped-up notetaking/journalling mode
+     (with which I wrote this document): [[*Org%20Mode][Org Mode]]
+   In my opinion it's one of the most powerful software tools
+   available for people of our chosen sector, and I'm amazed that so
+   few people use it. It does take a bit of getting used to, of
+   course, but my hope is that with this document you'll be able to
+   skip the brunt of that and get right to work. Read through this
+   introduction, then check out the key commands
+** A Word On Notation
+   Because much of the benefit of emacs comes from its key commands, a standard
+   notation has developed.  An emacs key command looks like "C-n" which says
+   "hold (C)ontrol and press n" or "press both (C)ontrol and n" The other major
+   modifier is denoted "M-" for (M)eta, which is Alt, by default, on a standard
+   PC keyboard, and option on a mac's keyboard.  Occasionally you will also see
+   "S-n", for (S)pecial, which is the windows key or the command key depending
+   on you system.
+
+   EVERY key command can easily be modified once you know this system. A common
+   modification is to switch control and capslock, or otherwise improve the
+   editor's ergonomics. This can be done (on a mac) in the System
+   Settings/Keyboard/Modifier Keys menu.
+   
+   A buffer is where text gets stored. This is distinct from
+
+   The word "window" means a different thing in emacs: what is normally called a
+   "window" is known as a "frame" in emacs, and an emacs "window" is a
+   subdivision of the frame. Each window visits a single buffer at a time, and
+   you can have as many windows as will fit inside a single frame. You can even
+   have any number of frames, all of which share the same collection of buffers
+   (in server mode, anyway, which I believe is the default for the macosx
+   distribution, and can be started by adding "(server-start)" to you init.el
+   file.
+
+   You split a frame with C-x 2/3 (2: horizontally; 3: vertically), delete a
+   window with C-x 0, and delete all but the focused window with C-x 1. 
+
+   Create a new frame with S-n, delete one with S-w. 
+** Important Commands
+This section used to be called "Key Commands" but I felt that this was too
+humorous for a technical document.
+*** Moving
+    | key | use               |
+    | C-n | next line         |
+    | C-p | prev line         |
+    | C-a | beginning of line |
+    | C-e | end of line       |
+    | C-f | char forward      |
+    | C-b | char back         |
+    | M-f | word forward      |
+    | M-b | word back         |
+*** Editing
+    | keys | use                                                    |
+    | C-d  | delete the char forward from the cursor.               |
+    | M-d  | delete the word forward from the cursor.               |
+    | Tab  | indent the line (in most programming modes + org mode) |
+*** Prefix Commands
+These are commands that go before other commands. The ones listed here are more
+general purpose, and so useful that I thought they should be in the intro.
+| C-q   | next character pressed will be entered into the buffer verbatim, without triggering any command |
+| C-u n | (n is a number) repeats whatever is entered after n times.                                      |
+*** Window Commands
+    See "A Word on Notations" for a description of window jargon.
+
+    You split a frame with C-x 2/3 (2: horizontally; 3: vertically), delete a
+    window with C-x 0, and delete all but the focused window with C-x 1. Create
+    a new frame with S-n, delete one with S-w. 
+
+** Setting Up
+*** Sane Setup (for people using a sane, POSIX compliant operating system</stallmanrant>)
+    create ~/.emacs.d/, ~/.emacs.d/elisp/ ~/.emacs.d/elisp/scripts and
+    ~/.emacs.d/elisp/plugins.
+    
+On first run, run 
+
+*** Windows Setup
+    This is a bit complicated to do right. There are installers that
+    will set up emacs for you, but what you really want is a full
+    shell for emacs to work with, or else it won't easily do a lot of
+    the cooler things, like LaTeX compiling, R subshells, etc. This
+    might have changed since I tried it last, because I've been doing
+    the following for years now, but I prefer this method.
+    1. Install cygwin64 in C:\\cygwin64, and when prompted choose to
+       install the emacs package under editors. This will set up a
+       posix environment within the folder, which means you should in
+       one of the first two directory levels see one marked home, and
+       within it will be your user folder.
+    2. open a cygwin shell. The default directory is that user
+       folder. Type 'mkdir ~/.emacs.d/ <enter>' to create the emacs
+       configuration directory, and copy the init.el file into this
+       directory using whatever method (probably explorer? idk what
+       you people do these days).
+    3. 
+* Beginner
+** Configuration and Customization
+   Also see ~/.emacs.d/init.el
+** Org Mode
+   This is awesome. Create documents, take notes, todo lists,
+   calendars, outlines... I use it for assignments (when I don't use
+   LaTeX), and much more. Its pretty simple to use, and you certainly
+   don;'t need to use everything (its HUGE). Basically, in org mode
+   you just using *'s to break up sections, and numbers/-'s to
+   delineate lists, along with a bunch of more "advanced" markup, and
+   all in a text file. What makes org mode awesome, however, are the
+   literal ton of integrations to make that markup smart. Trust me,
+   its fucking awesome.
+   
+   see:
+   http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/
+*** Intro to org-mode
+    org-mode is kinda like a better Rmarkdown. Indeed, org was basically the
+    first markdown language, and a bunch of markdown's syntax translates
+    directly. 
+
+    Most org-mode commands involve two keypresses, one to invoke org-mode, the
+    other to give it a function. C-c invokes org-mode When in doubt, press C-c
+    C-c. This honestly holds true for a bunch of major modes, honestly.
+    
+* Intermediate
+** Programming
+*** Useful Packages
+    flycheck, irony, company,
+*** Microcontrollers
+    http://platformio.org/get-started
+** Doing Math (R)
+   Emacs has absolutely amazing R support. Like,
+   phenomenal. Easy. Boom. 
+
+   Install ess 
+   - http://ess.r-project.org/Manual/ess.html
+   - https://ess.r-project.org/index.php?Section=download
+
+```{elisp}
+   ;; Emacs for MacOSX -- https://emacsformacosx.com/
+   ;;; ESS -- "Emacs Speaks Statistics" with r-markdown integration
+   ;; first do M-x package-install RET polymode
+   (defun rmd-mode ()
+   "ESS Markdown mode for rmd files"
+   (interactive)
+   ;; (setq load-path 
+   ;;   (append (list "path/to/polymode/" "path/to/polymode/modes/")
+   ;;       load-path))
+   (require 'poly-R)
+   (require 'poly-markdown)     
+   (poly-markdown+r-mode))
+   ;;; end ESS
+```
+
+see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
+
+*** Install ess
+    1. First, ensure you have R installed. If you think you do, open
+       up your terminal and run R. If yes, next step. Otherwise
+       install R from cran.r-project.org
+    2. install ess (M-x package-install <enter> ess <enter>)
+    3. to use ess, open any file with the .r extension, or open an
+       empty buffer and do M-x R-mode
+       
+*** resources: https://cran.r-project.org/doc/FAQ/R-FAQ.html#R-and-Emacs
+*** Issues: 
+    I ran into this one issue on mac: it wasn't running any of the
+    subprocesses, including R, platformio, cmake..  The fix is
+    included in the Issues section, under mac/subprocesses.
+* Advanced
+** Scripting Emacs
+   see https://www.gnu.org/software/emacs/manual/html_node/eintr/
+* Issues
+** Mac
+*** Subprocesses
+    Emacs might complain about not being able to run any subprocesses
+    (or something to that effect) if you try to compile something, run
+    python or R, or any number of other things. There is a package
+    called exec-path-from-shell which does as it's name says: help
+    emacs find your shit.
+    1. Install it with M-x package-install <enter> exec-path-from-shell <enter>, then:
+    2. In your init file, uncomment the section mentioning mac osx.
+       1. It adds the exec-path-from-shell-initialization eval-after-load
+       2. Essentially this means that once the init file ends, emacs
+          will add the execution path of the shell environment to the
+          emacs process.
+       3. Essentially what *this* means is that emacs will be able to
+          find and run your shit.
+* Citations/General Resources
+  [[https://www.quora.com/Why-use-Emacs-over-Sublime-Text?share=1][Why emacs?]]
+  [[https://stackoverflow.com/questions/42201535/how-to-set-python-env-in-org-mode#44610243][python env setup (eg anaconda)]]
+  
+  http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+  https://www.masteringemacs.org/article/beginners-guide-to-emacs
+  http://orgmode.org/worg/org-tutorials/org4beginners.html
+  http://sachachua.com/blog/2014/04/emacs-beginner-resources/
+  https://www.gnu.org/software/emacs/tour/
+  https://www.gnu.org/software/emacs/manual/html_node/eintr/
+  http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/ <--
+  dopeaf
+  https://www.emacswiki.org/emacs/EmacsNiftyTricks#toc5
+  https://writequit.org/org/ <-- from an unconfigured bash to zsh+tmux+emacs
+  (beautiful)
+  https://web.archive.org/web/20120502043432/http://linux.dsplabs.com.au/resume-writing-example-latex-template-linux-curriculum-vitae-professional-cv-layout-format-text-p54/
+  http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
+  
