@@ -5,7 +5,6 @@
 #
 # alias cheatsheet="less ~/path_to_cheat_sheet.org.sh" 
 
-
 * Reference:
 ** Basics:
 *** Getting help:

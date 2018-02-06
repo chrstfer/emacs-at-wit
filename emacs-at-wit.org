@@ -1,10 +1,15 @@
-# Emacs@WIT -- begun: October 2017 -- Current: February 2018 -- carriganbrollyc@wit.edu
-To view, move cursor to a star and press tab.
+#+AUTHOR: Chris Carrigan Brolly <carriganbrollyc@wit.edu>
+#+TITLE: Emacs@WIT
+#+HTML_HEAD: <link href="styles/css/static-style.css" rel="stylesheet" type="text/css" />
+# Begun: October 2017 -- Current: February 2018
+
+First, hit Shift and Tab at once to expand the headings. Then, to view, move
+cursor to a star and press tab.
 * TODO emacs-at-wit WIP 
   - [ ] Gnuplot (figure out first, then write up)
   - [ ] Write up a bit on how to solve problems/debug
-* Introduction (read me first):  
-  Emacs--specifically [[https://www.gnu.org/][GNU] [[https://www.gnu.org/software/emacs/][Emacs]]-- is among the
+* Introduction: *Be Not Afraid* (read me first):
+  Emacs--specifically [[*GNU][GNU]] [[https://www.gnu.org/software/emacs/][Emacs]]-- is among the
   oldest--and certainly among the best--editors on the market today, especially
   for those doing scientific/mathematical work. Not only that, but it's
   completely free, and open source. One of two contenders in [[https://en.wikipedia.org/wiki/Editor_war][the Editor War]]
@@ -28,13 +33,12 @@ To view, move cursor to a star and press tab.
 
   This project, emacs@wit is an attempt to create a relatively easy environment
   for new emacs users interested in using emacs for scientific and statistical
-  work. This includes nice configurations for [[*Doing Math (R)][R]], [[*Python][Python]], [[*\LaTeX][\LaTeX]], [[*Org Mode][org-mode]],
-  [[*Plotting with Gnuplot][Gnuplot]], and more. I began doing this because I wanted to
-  evangelize, and had interested friends concerned about the learning
-  curve. Indeed, the learning curve for basic tasks is next to nil, most of the
-  stuff you already do likely works in emacs too, and this project should
-  hopefully be the crash course you need to start doing more interesting and
-  advanced stuff. 
+  work. This includes nice configurations for [[*Doing Math (R)][R]], [[*Python][Python]], [[*\LaTeX][\LaTeX]], [[*org-mode: God's Gift to emacs Users][org-mode]], [[*Plotting with Gnuplot][Gnuplot]],
+  and more.  I began doing this because I wanted to evangelize, and had
+  interested friends concerned about the learning curve. Indeed, the learning
+  curve for basic tasks is next to nil, most of the stuff you already do likely
+  works in emacs too, and this project should hopefully be the crash course you
+  need to start doing more interesting and advanced stuff.
 
   I'll close off with this: *be not afraid*. Emacs definitely seems scary at
   first, but quickly you'll realize that it's quite sensible and consistent,
@@ -49,10 +53,10 @@ To view, move cursor to a star and press tab.
    - Everything is customizable. If you dont like the [[*Important Commands][default key bindings]], you
      can easily change them: [[*Configuration%20and%20Customization][Configuration and Customization]]
    - It is the best IDE you will ever use. Hands down. To the point
-     that it might ruin other IDE's for you: [[*Programming][Programming]]
+     that it might ruin other IDE's for you: [[*General Programming][Programming]]
    - It acts as a better R Notebook platform than any I've seen: [[*Doing%20Math%20(R)][Doing Math (R)]
    - It has integrated a smart, souped-up notetaking/journalling mode
-     (with which I wrote this document): [[*Org%20Mode][org-mode]]
+     (with which I wrote this document): [[*org-mode: God's Gift to emacs Users][org-mode]]
    In my opinion it's one of the most powerful software tools
    available for people of our chosen sector, and I'm amazed that so
    few people use it. It does take a bit of getting used to, of
@@ -120,11 +124,9 @@ general purpose, and so useful that I thought they should be in the intro.
     a new frame with S-n, delete one with S-w. 
 
 ** Setting Up
-*** Sane Setup (for people using a sane, POSIX compliant operating system</stallmanrant>)
+*** TODO Sane Setup (for people using a sane, POSIX compliant operating system</stallmanrant>)
     create ~/.emacs.d/, ~/.emacs.d/elisp/ ~/.emacs.d/elisp/scripts and
     ~/.emacs.d/elisp/plugins.
-    
-On first run, run 
 
 *** Windows Setup
     This is a bit complicated to do right. There are installers that
@@ -145,7 +147,7 @@ On first run, run
        you people do these days).
     3. 
 * Beginner
-** Configuration and Customization
+** TODO Configuration and Customization
    Also see ~/.emacs.d/init.el
 ** org-mode: God's Gift to emacs Users
    This is awesome. Create documents, take notes, todo lists,
@@ -168,16 +170,18 @@ On first run, run
     Most org-mode commands involve two keypresses, one to invoke org-mode, the
     other to give it a function. C-c invokes org-mode When in doubt, press C-c
     C-c. This honestly holds true for a bunch of major modes, honestly.
+** eshell (built-in shell environment)
+   see [[*Citations/General Resources][Citations/General Resources/eshell fun]] 
+
 ** Miscellaneous Nice Commands  
    | Keystroke       | Command (M-x) | Description                                            |
    | M-! (M-Shift-1) | shell-command | Run a shell command and place the output into a buffer |
    |                 |               |                                                        |
 
-*** eshell (built in shell environment)
    emacs has a scriptable (in emacs lisp) built in shell environment, `M-x eshell`
 
 * Intermediate
-** Programming in General
+** General Programming
 *** Useful Packages
     flycheck, irony, company,
 *** Microcontrollers
@@ -228,9 +232,19 @@ see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
 * Advanced
 ** Scripting Emacs
    see https://www.gnu.org/software/emacs/manual/html_node/eintr/
-* Issues
-** Mac
-*** Subprocesses
+
+* Appendices
+** Free Software Foundation
+   [[https://www.fsf.org/][FSF]] 
+*** GNU
+   [[https://gnu.org/][GNU]]
+
+*** GPL
+   [[https://www.gnu.org/licenses/][GPL]]
+
+** Issues
+*** Mac
+**** Subprocesses
     Emacs might complain about not being able to run any subprocesses
     (or something to that effect) if you try to compile something, run
     python or R, or any number of other things. There is a package
@@ -244,30 +258,40 @@ see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
           emacs process.
        3. Essentially what *this* means is that emacs will be able to
           find and run your shit.
-* Appendices
-** GNU
-   [[https://gnu.org/][GNU]]
 
-** GPL
-   [[https://www.gnu.org/licenses/][GPL]]
+** Citations/General Resources
+   [[https://www.quora.com/Why-use-Emacs-over-Sublime-Text?share=1][Why emacs?]]
+   [[http://sachachua.com/blog/2014/04/emacs-beginner-resources/][beginner resources]]
 
-* Citations/General Resources
-  [[https://www.quora.com/Why-use-Emacs-over-Sublime-Text?share=1][Why emacs?]]
-  [[https://stackoverflow.com/questions/42201535/how-to-set-python-env-in-org-mode#44610243][python env setup (eg anaconda)]]
-  [[https://orgmode.org/worg/orgcard.html][org-mode reference card]] 
-
+   http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+   https://www.masteringemacs.org/article/beginners-guide-to-emacs
+   http://orgmode.org/worg/org-tutorials/org4beginners.html
   
-  http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
-  https://www.masteringemacs.org/article/beginners-guide-to-emacs
-  http://orgmode.org/worg/org-tutorials/org4beginners.html
-  http://sachachua.com/blog/2014/04/emacs-beginner-resources/
-  https://www.gnu.org/software/emacs/tour/
-  https://www.gnu.org/software/emacs/manual/html_node/eintr/
-  http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/ <--
-  dopeaf
-  https://www.emacswiki.org/emacs/EmacsNiftyTricks#toc5
-  https://writequit.org/org/ <-- from an unconfigured bash to zsh+tmux+emacs
-  (beautiful)
-  https://web.archive.org/web/20120502043432/http://linux.dsplabs.com.au/resume-writing-example-latex-template-linux-curriculum-vitae-professional-cv-layout-format-text-p54/
-  http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
+   https://www.gnu.org/software/emacs/tour/
+   https://www.gnu.org/software/emacs/manual/html_node/eintr/
   
+   https://www.emacswiki.org/emacs/EmacsNiftyTricks#toc5
+   https://writequit.org/org/ <-- from an unconfigured bash to zsh+tmux+emacs (beautiful)
+   https://web.archive.org/web/20120502043432/
+   
+  
+*** Latex
+    [[http://linux.dsplabs.com.au/resume-writing-example-latex-template-linux-curriculum-vitae-professional-cv-layout-format-text-p54/][Writing a LaTeX resume]]
+
+
+*** R 
+    
+*** org mode
+    [[https://orgmode.org/worg/orgcard.html][org-mode reference card]] 
+    [[http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][org-tutorial]]
+    [[http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/][dopeaf org note taking tutorial]]
+    
+  
+*** eshell
+    [[http://www.howardism.org/Technical/Emacs/eshell-fun.html][eshell fun]]
+
+
+*** python
+    [[https://stackoverflow.com/questions/42201535/how-to-set-python-env-in-org-mode#44610243][python env setup (eg anaconda)]]
+
+    
