@@ -1,28 +1,65 @@
-# Emacs@WIT -- October 2017 -- carriganbrollyc@wit.edu
+# Emacs@WIT -- begun: October 2017 -- Current: February 2018 -- carriganbrollyc@wit.edu
 To view, move cursor to a star and press tab.
 * TODO emacs-at-wit WIP 
-  - [ ] 
-* Introduction (read me first):
+  - [ ] Gnuplot (figure out first, then write up)
+  - [ ] Write up a bit on how to solve problems/debug
+* Introduction (read me first):  
+  Emacs--specifically [[https://www.gnu.org/][GNU] [[https://www.gnu.org/software/emacs/][Emacs]]-- is among the
+  oldest--and certainly among the best--editors on the market today, especially
+  for those doing scientific/mathematical work. Not only that, but it's
+  completely free, and open source. One of two contenders in [[https://en.wikipedia.org/wiki/Editor_war][the Editor War]]
+  (begun in 1985 with no end in sight), Emacs has developed an avid following
+  over the past *46* years. The other contender is Vi/Vim, which will see no
+  further mention here. 
 
+  Yes, thats almost *5 decades* of continuous development. Initially written in
+  1972 by [[https://www.stallman.org/][Richard M. Stallman]], it has seen continuous development by the [[*GNU][GNU]]
+  Project since that time. [[*GNU][The GNU Project]] is a collection of software released
+  under the [[*GPL][General Public License]] (or GPL). What this means is that all
+  software in the collection (and any other software using a GPL license) is not
+  only freely available at not cost, it is also open source, with the condition
+  that if you use that source, any derivative projects must be released under
+  the same license. This does not, however, mean that use of the softwares
+  themselves force you to adopt the same license (though upon reading into it
+  you may decide to do just that).  I recommend you check it out, because there
+  is a huge number of awesome programs available for free with no
+  strings. Indeed, it's likely that you already have or have used software from
+  [[*GNU][GNU]] or that was released under the [[*GPL][GPL]].
+
+  This project, emacs@wit is an attempt to create a relatively easy environment
+  for new emacs users interested in using emacs for scientific and statistical
+  work. This includes nice configurations for [[*Doing Math (R)][R]], [[*Python][Python]], [[*\LaTeX][\LaTeX]], [[*Org Mode][org-mode]],
+  [[*Plotting with Gnuplot][Gnuplot]], and more. I began doing this because I wanted to
+  evangelize, and had interested friends concerned about the learning
+  curve. Indeed, the learning curve for basic tasks is next to nil, most of the
+  stuff you already do likely works in emacs too, and this project should
+  hopefully be the crash course you need to start doing more interesting and
+  advanced stuff. 
+
+  I'll close off with this: *be not afraid*. Emacs definitely seems scary at
+  first, but quickly you'll realize that it's quite sensible and consistent,
+  even intuitive. It's probably a bit different than what you're used to, but
+  once you cross the comfortability hurdle you probably won't want to turn back.
 
 ** What is Emacs?
-   From the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html][Manual]]: "Emacs is the extensible, customizable,
+   From the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html][Manual]]: "emacs is the extensible, customizable,
    self-documenting real-time display editor," but that's so dry. It's
    just that, well, honestly it's impossible to find one thing to call
    emacs, except life-changing. Some examples:
-   - Everything is customizable. If you dont like the [[*Important%20Commands][Key Commands]],
-     change them: [[*Configuration%20and%20Customization][Configuration and Customization]]
+   - Everything is customizable. If you dont like the [[*Important Commands][default key bindings]], you
+     can easily change them: [[*Configuration%20and%20Customization][Configuration and Customization]]
    - It is the best IDE you will ever use. Hands down. To the point
      that it might ruin other IDE's for you: [[*Programming][Programming]]
    - It acts as a better R Notebook platform than any I've seen: [[*Doing%20Math%20(R)][Doing Math (R)]
    - It has integrated a smart, souped-up notetaking/journalling mode
-     (with which I wrote this document): [[*Org%20Mode][Org Mode]]
+     (with which I wrote this document): [[*Org%20Mode][org-mode]]
    In my opinion it's one of the most powerful software tools
    available for people of our chosen sector, and I'm amazed that so
    few people use it. It does take a bit of getting used to, of
    course, but my hope is that with this document you'll be able to
    skip the brunt of that and get right to work. Read through this
-   introduction, then check out the key commands
+   introduction, then check out [[*Important Commands][the key commands]].
+
 ** A Word On Notation
    Because much of the benefit of emacs comes from its key commands, a standard
    notation has developed.  An emacs key command looks like "C-n" which says
@@ -110,7 +147,7 @@ On first run, run
 * Beginner
 ** Configuration and Customization
    Also see ~/.emacs.d/init.el
-** Org Mode
+** org-mode: God's Gift to emacs Users
    This is awesome. Create documents, take notes, todo lists,
    calendars, outlines... I use it for assignments (when I don't use
    LaTeX), and much more. Its pretty simple to use, and you certainly
@@ -131,13 +168,22 @@ On first run, run
     Most org-mode commands involve two keypresses, one to invoke org-mode, the
     other to give it a function. C-c invokes org-mode When in doubt, press C-c
     C-c. This honestly holds true for a bunch of major modes, honestly.
-    
+** Miscellaneous Nice Commands  
+   | Keystroke       | Command (M-x) | Description                                            |
+   | M-! (M-Shift-1) | shell-command | Run a shell command and place the output into a buffer |
+   |                 |               |                                                        |
+
+*** eshell (built in shell environment)
+   emacs has a scriptable (in emacs lisp) built in shell environment, `M-x eshell`
+
 * Intermediate
-** Programming
+** Programming in General
 *** Useful Packages
     flycheck, irony, company,
 *** Microcontrollers
     http://platformio.org/get-started
+** TODO Python
+** TODO \LaTeX
 ** Doing Math (R)
    Emacs has absolutely amazing R support. Like,
    phenomenal. Easy. Boom. 
@@ -177,6 +223,8 @@ see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
     I ran into this one issue on mac: it wasn't running any of the
     subprocesses, including R, platformio, cmake..  The fix is
     included in the Issues section, under mac/subprocesses.
+** TODO Plotting with Gnuplot
+   
 * Advanced
 ** Scripting Emacs
    see https://www.gnu.org/software/emacs/manual/html_node/eintr/
@@ -196,9 +244,18 @@ see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
           emacs process.
        3. Essentially what *this* means is that emacs will be able to
           find and run your shit.
+* Appendices
+** GNU
+   [[https://gnu.org/][GNU]]
+
+** GPL
+   [[https://www.gnu.org/licenses/][GPL]]
+
 * Citations/General Resources
   [[https://www.quora.com/Why-use-Emacs-over-Sublime-Text?share=1][Why emacs?]]
   [[https://stackoverflow.com/questions/42201535/how-to-set-python-env-in-org-mode#44610243][python env setup (eg anaconda)]]
+  [[https://orgmode.org/worg/orgcard.html][org-mode reference card]] 
+
   
   http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
   https://www.masteringemacs.org/article/beginners-guide-to-emacs
