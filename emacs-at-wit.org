@@ -1,14 +1,33 @@
-#+AUTHOR: Chris Carrigan Brolly <carriganbrollyc@wit.edu>
-#+TITLE: Emacs@WIT
-#+HTML_HEAD: <link href="styles/css/static-style.css" rel="stylesheet" type="text/css" />
-# Begun: October 2017 -- Current: February 2018
+#+AUTHOR: Chris Carrigan Brolly
+#+EMAIL: carriganbrollyc@wit.edu
+#+TITLE: emacs-at-wit
+#+DESCRIPTION: Begun: October 2017 -- Current: February 2018
 
-First, hit Shift and Tab at once to expand the headings. Then, to view, move
-cursor to a star and press tab.
-* TODO emacs-at-wit WIP 
+#+SETUPFILE: styles/setup/theme-readtheorg-local.setup
+#+LANGUAGE: en
+#+OPTIONS:   H:6, toc:2
+#+INFOJS_OPT: view:info toc:nil 
+
+# ---
+# ORGFILE README: 
+# ---
+# First, hit Shift and Tab at once to expand the headings. Then, to view, move
+# cursor to a star and press tab.
+
+* TODO emacs-at-wit WIP
   - [ ] Gnuplot (figure out first, then write up)
   - [ ] Write up a bit on how to solve problems/debug
-* Introduction: *Be Not Afraid* (read me first):
+  - [ ] Using [[https://mailutils.org/manual/mailutils.html][Mailutils]]
+  - [ ] Customizing Org Mode
+
+** Educate Lawrence
+   - Conda Mode :: He loves conda and the utility it provides. Let's check it
+                   out. Matt can help, he has a conda install.
+                   [[https://github.com/necaris/conda.el][conda.el]]
+   - 
+
+
+* Introduction: (read me first)
   Emacs--specifically [[*GNU][GNU]] [[https://www.gnu.org/software/emacs/][Emacs]]-- is among the
   oldest--and certainly among the best--editors on the market today, especially
   for those doing scientific/mathematical work. Not only that, but it's
@@ -124,7 +143,8 @@ general purpose, and so useful that I thought they should be in the intro.
     a new frame with S-n, delete one with S-w. 
 
 ** Setting Up
-*** TODO Sane Setup (for people using a sane, POSIX compliant operating system</stallmanrant>)
+*** TODO Sane Setup
+    (for people using a sane, POSIX compliant operating system</stallmanrant>)
     create ~/.emacs.d/, ~/.emacs.d/elisp/ ~/.emacs.d/elisp/scripts and
     ~/.emacs.d/elisp/plugins.
 
@@ -148,7 +168,7 @@ general purpose, and so useful that I thought they should be in the intro.
     3. 
 * Beginner
 ** TODO Configuration and Customization
-   Also see ~/.emacs.d/init.el
+   Also see ~/.emacs.d/init.el and [[*Configurations][Appendices/Configurations]] 
 ** org-mode: God's Gift to emacs Users
    This is awesome. Create documents, take notes, todo lists,
    calendars, outlines... I use it for assignments (when I don't use
@@ -159,9 +179,15 @@ general purpose, and so useful that I thought they should be in the intro.
    all in a text file. What makes org mode awesome, however, are the
    literal ton of integrations to make that markup smart. Trust me,
    its fucking awesome.
-   
-   see:
-   http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/
+*** Literate Programming -- [[*org mode][see: resources]]
+    Basically, write code like a book, code blocks in markdown with explanations
+    and examples etc, and thats your programs source code. 
+    
+
+*** Notetaking
+    see:http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/
+
+
 *** Intro to org-mode
     org-mode is kinda like a better Rmarkdown. Indeed, org was basically the
     first markdown language, and a bunch of markdown's syntax translates
@@ -171,7 +197,7 @@ general purpose, and so useful that I thought they should be in the intro.
     other to give it a function. C-c invokes org-mode When in doubt, press C-c
     C-c. This honestly holds true for a bunch of major modes, honestly.
 ** eshell (built-in shell environment)
-   see [[*Citations/General Resources][Citations/General Resources/eshell fun]] 
+   see [[*General Resources][General Resources/eshell fun]]
 
 ** Miscellaneous Nice Commands  
    | Keystroke       | Command (M-x) | Description                                            |
@@ -183,7 +209,9 @@ general purpose, and so useful that I thought they should be in the intro.
 * Intermediate
 ** General Programming
 *** Useful Packages
-    flycheck, irony, company,
+    - flycheck --
+    - irony    --
+    - company  -- 
 *** Microcontrollers
     http://platformio.org/get-started
 ** TODO Python
@@ -196,7 +224,7 @@ general purpose, and so useful that I thought they should be in the intro.
    - http://ess.r-project.org/Manual/ess.html
    - https://ess.r-project.org/index.php?Section=download
 
-```{elisp}
+#+BEGIN_SRC emacs-lisp :name rmd-mode-definition
    ;; Emacs for MacOSX -- https://emacsformacosx.com/
    ;;; ESS -- "Emacs Speaks Statistics" with r-markdown integration
    ;; first do M-x package-install RET polymode
@@ -210,9 +238,9 @@ general purpose, and so useful that I thought they should be in the intro.
    (require 'poly-markdown)     
    (poly-markdown+r-mode))
    ;;; end ESS
-```
+#+END_SRC
 
-see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
+see [[*Subprocesses][Issues on Mac/Subprocesses]] if your emacs complains about running R.
 
 *** Install ess
     1. First, ensure you have R installed. If you think you do, open
@@ -222,13 +250,18 @@ see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
     3. to use ess, open any file with the .r extension, or open an
        empty buffer and do M-x R-mode
        
-*** resources: https://cran.r-project.org/doc/FAQ/R-FAQ.html#R-and-Emacs
+*** Resources: 
+    https://cran.r-project.org/doc/FAQ/R-FAQ.html#R-and-Emacs
+
 *** Issues: 
     I ran into this one issue on mac: it wasn't running any of the
     subprocesses, including R, platformio, cmake..  The fix is
     included in the Issues section, under mac/subprocesses.
 ** TODO Plotting with Gnuplot
-   
+** TODO Magit: Git Magic!
+   A full featured git client within emacs. Awesome.
+   - [[https://github.com/magit/magit/blob/master/Documentation/magit.org][Magit Manual]]
+
 * Advanced
 ** Scripting Emacs
    see https://www.gnu.org/software/emacs/manual/html_node/eintr/
@@ -242,7 +275,38 @@ see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
 *** GPL
    [[https://www.gnu.org/licenses/][GPL]]
 
+
+** Configurations
+
+*** Org
+    - Variables ::
+      - org-src-window -- Sets where C-c ' in a src block opens its new window.
+      org-src-window-setup is a variable defined in ‘org-src.el’.
+      Its value is ‘reorganize-frame’
+
+      Documentation:
+      How the source code edit buffer should be displayed.
+      Possible values for this option are:
+
+      current-window    Show edit buffer in the current window, keeping all other
+      windows.
+      other-window      Use ‘switch-to-buffer-other-window’ to display edit buffer.
+      reorganize-frame  Show only two windows on the current frame, the current
+      window and the edit buffer.  When exiting the edit buffer,
+      return to one window.
+      other-frame       Use ‘switch-to-buffer-other-frame’ to display edit buffer.
+      Also, when exiting the edit buffer, kill that frame.
+
+      You can customize this variable.
+
+
 ** Issues
+*** Debugging Emacs Yourself
+    This route is not exactly for the faint of heart, but doing so definitely
+    helps you learn way more about emacs and your machine environment. 
+    - [[https://www.pirilampo.org/emacs/debug-emacs-crash.html][Debugging Emacs Crashes]]
+    - 
+
 *** Mac
 **** Subprocesses
     Emacs might complain about not being able to run any subprocesses
@@ -259,39 +323,58 @@ see [[*Subprocesses][Issues on Mac]] if your emacs complains about running R.
        3. Essentially what *this* means is that emacs will be able to
           find and run your shit.
 
-** Citations/General Resources
-   [[https://www.quora.com/Why-use-Emacs-over-Sublime-Text?share=1][Why emacs?]]
-   [[http://sachachua.com/blog/2014/04/emacs-beginner-resources/][beginner resources]]
+** General Resources
+   - [[http://www.catb.org/esr/faqs/smart-questions.html][How to Ask Questions the Smart Way]]
+   - [[https://www.quora.com/Why-use-Emacs-over-Sublime-Text?share=1][Why emacs?]]
+   - [[http://sachachua.com/blog/2014/04/emacs-beginner-resources/][beginner resources]]
 
-   http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
-   https://www.masteringemacs.org/article/beginners-guide-to-emacs
-   http://orgmode.org/worg/org-tutorials/org4beginners.html
+   - [[http://eschulte.github.io/emacs-starter-kit/][Emacs Starter Kit]] <-- package by one coauthor of "Reproducible Research"
+
+   - http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+   - https://www.masteringemacs.org/article/beginners-guide-to-emacs
+   - http://orgmode.org/worg/org-tutorials/org4beginners.html
   
-   https://www.gnu.org/software/emacs/tour/
-   https://www.gnu.org/software/emacs/manual/html_node/eintr/
+   - https://www.gnu.org/software/emacs/tour/
+   - https://www.gnu.org/software/emacs/manual/html_node/eintr/
   
-   https://www.emacswiki.org/emacs/EmacsNiftyTricks#toc5
-   https://writequit.org/org/ <-- from an unconfigured bash to zsh+tmux+emacs (beautiful)
-   https://web.archive.org/web/20120502043432/
+   - https://www.emacswiki.org/emacs/EmacsNiftyTricks#toc5
+   - https://writequit.org/org/ <-- from an unconfigured bash to zsh+tmux+emacs (beautiful)
+   - https://web.archive.org/web/20120502043432/
    
-  
-*** Latex
-    [[http://linux.dsplabs.com.au/resume-writing-example-latex-template-linux-curriculum-vitae-professional-cv-layout-format-text-p54/][Writing a LaTeX resume]]
+*** Magit
+    - [[file:supplements/manuals/magit-manual.org][Magit Manual]]
 
+*** Latex
+    - [[http://linux.dsplabs.com.au/resume-writing-example-latex-template-linux-curriculum-vitae-professional-cv-layout-format-text-p54/][Writing a LaTeX resume]]
 
 *** R 
     
 *** org mode
-    [[https://orgmode.org/worg/orgcard.html][org-mode reference card]] 
-    [[http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][org-tutorial]]
-    [[http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/][dopeaf org note taking tutorial]]
-    
-  
+    - [[https://orgmode.org/worg/orgcard.html][org-mode reference card]] 
+    - [[http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][org-tutorial]]
+    - [[http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/][dopeaf org note taking tutorial]]
+    - [[https://home.fnal.gov/~neilsen/notebook/orgExamples/org-examples.html][Fermilab Org Cookbook]]
+    - [[http://eschulte.github.io/org-scraps/][Org-Babel Scraps and Examples]]
+    - Literate Programming ::
+      - [[http://www.howardism.org/Technical/LP/introduction.html][An Introduction]]
+      - [[http://www.howardism.org/Technical/Emacs/literate-devops.html][Literate Devops]]
+      - [[docview:supplements/ReproducibleResearchWithOrg.pdf::1][Reproducible Research With Org]]
+      
 *** eshell
-    [[http://www.howardism.org/Technical/Emacs/eshell-fun.html][eshell fun]]
-
+    - 1.2 What Eshell is not :: 
+    Eshell is not a replacement for system shells such as bash or zsh. Use
+    Eshell when you want to move text between Emacs and external processes; if
+    you only want to pipe output from one external process to another (and then
+    another, and so on), use a system shell, because Emacs's IO system is buffer
+    oriented, not stream oriented, and is very inefficient at such tasks. If you
+    want to write shell scripts in Eshell, don't; either write an elisp library
+    or use a system shell. - [[https://www.gnu.org/software/emacs/manual/html_mono/eshell.html][emacs manual]]
+    
+- [[http://www.howardism.org/Technical/Emacs/eshell-fun.html][eshell fun]]
 
 *** python
-    [[https://stackoverflow.com/questions/42201535/how-to-set-python-env-in-org-mode#44610243][python env setup (eg anaconda)]]
-
+    - [[https://stackoverflow.com/questions/42201535/how-to-set-python-env-in-org-mode#44610243][python env setup (eg anaconda)]]
     
+*** Citations
+    - [[file:emacs-at-wit.bib][BiBTeX File]]
+      

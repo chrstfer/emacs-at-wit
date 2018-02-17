@@ -472,3 +472,6 @@ TSWLatexianTemp*
 
 
 # End of https://www.gitignore.io/api/r,tex,macos,elisp,emacs,python
+
+tests/
+

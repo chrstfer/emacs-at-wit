@@ -1,0 +1,141 @@
+#+OPTIONS: H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+OPTIONS: author:nil email:nil creator:nil timestamp:nil
+#+TITLE: Playing with R and org-mode
+#+SETUPFILE: ~/org/org-templates/blog-entry.org
+#+LANGUAGE: en
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+HTML_HEAD: <link rel="stylesheet" title="Standard" href="../../../../css/worg.css" type="text/css" />
+#+HTML_HEAD: <script type="text/javascript"><?php include ("libjs/layersmenu-browser_detection.js"); ?></script>
+#+HTML_HEAD: <link rel="stylesheet" href="../../../../layerstreemenu.css" type="text/css"></link>
+#+HTML_HEAD: <script type="text/javascript" src="libjs/layerstreemenu-cookies.js"></script>
+#+PROPERTY: header-args :eval never-export
+#+XSLT: 
+
+#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes
+* Playing with babel
+This test has been inspired by
+http://orgmode.org/worg/org-contrib/babel/examples/foo.html
+#+BEGIN_SRC R :exports both
+2+2
+#+END_SRC
+
+#+RESULTS: 
+: 4
+
+Let's generate some data 
+#+BEGIN_SRC R :results output :exports both :session
+n <- 50
+x <- seq(1, n)
+a.true <- 3
+b.true <- 1.5
+y.true <- a.true + b.true * x
+s.true <- 17.3
+y <- y.true + s.true * rnorm(n)
+out1 <- lm(y ~ x)
+#+END_SRC
+
+#+RESULTS: 
+
+Let's look at the summary of the linear regression
+
+#+BEGIN_SRC R :results output :exports results :session
+summary(out1)
+#+END_SRC
+
+#+RESULTS: 
+#+BEGIN_EXAMPLE
+
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-32.131  -9.722  -2.701  10.029  40.094 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   1.1789     4.2621   0.277    0.783    
+x             1.5420     0.1455  10.601 3.62e-14 ***
+---
+Signif. codes:  0 â€˜***â€™ 0.001 â€˜**â€™ 0.01 â€˜*â€™ 0.05 â€˜.â€™ 0.1 â€˜ â€™ 1 
+
+Residual standard error: 14.84 on 48 degrees of freedom
+Multiple R-squared: 0.7007,	Adjusted R-squared: 0.6945 
+F-statistic: 112.4 on 1 and 48 DF,  p-value: 3.621e-14
+#+END_EXAMPLE
+
+And now, let's plot all this:
+#+BEGIN_SRC R :results output graphics :file fig1.png :session :exports both
+  plot(x, y)
+  abline(out1)
+#+END_SRC
+
+#+RESULTS: 
+[[file:fig1.png]]
+
+Sweet! Let's try a more complicated one, just for the fun:
+#+BEGIN_SRC R :results output graphics :file fig2.png :session :exports both
+library(ggplot2) 
+data(diamonds) 
+dsmall <-diamonds[sample(nrow(diamonds), 100), ] 
+ggplot(data = dsmall, aes(x=carat, y=price, color=color, shape=cut, size=carat)) + geom_point()
+#+END_SRC
+
+#+RESULTS: 
+[[file:fig2.png]]
+
+* Issues
+- This org file was originally in my journal where one of the
+  previous entry is configured to use beamer. Whatever I tried,
+  the LaTeX export keeps using beamer. Isn't it possible to have in
+  the same org files some part that are exported in beamer and
+  others that are exported with article? It seems I can
+  override =TITLE= and =AUTHOR= but not =LaTeX_CLASS=. The html
+  export works as a charm though so whatever....
+- The file/figure export mechanism presented in the previous
+  link is completely broken. But the one explained in
+  https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org
+  works like a charm. The correct syntax for simple blocks is
+  thus:
+  #+BEGIN_EXAMPLE
+  ,#+BEGIN_SRC R :results output :exports both :session
+    n <- 50
+    x <- seq(1, n)
+    a.true <- 3
+  ,#+END_SRC
+  #+END_EXAMPLE
+  and for images:
+  #+BEGIN_EXAMPLE
+  ,#+BEGIN_SRC R :results output graphics :file fig1.png :session :exports both
+    plot(x, y)
+    abline(out1)
+  ,#+END_SRC
+  #+END_EXAMPLE
+  Then all you have to do is =C-c C-c= in the block to evaluate
+  it. For the moment, I just finally got it working and I have
+  to say I still haven't completely undertood how these
+  =:results= and =:exports= really work.
+- Objects are thrown away from one block to another. I had to
+  add a =:session= at the end of every block, which is a
+  pain. Actually, I later realized that in already had set up a
+  shortcu C-S-F4 that inserts an org-skeleton with default
+  behavior for babel with R, including a global session flag.
+  #+BEGIN_EXAMPLE
+          ,#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes 
+  #+END_EXAMPLE
+  Unfortunately, it does not seem to work (maybe syntax has
+  changed) and I still need to add these =:session= flags
+  everywhere...
+- This webpage also indicates a trick for inlining images that
+  is just amazing! So when I open the org file in emacs it's
+  almost wysiwyg! ;)
+  #+BEGIN_EXAMPLE 
+  	(add-hook 'org-babel-after-execute-hook 'org-display-inline-images) 
+  	(add-hook 'org-mode-hook 'org-display-inline-images)
+  #+END_EXAMPLE
+
+Entered on [2013-03-17 dim. 08:32]
+
