@@ -20,6 +20,10 @@
   - [ ] Using [[https://mailutils.org/manual/mailutils.html][Mailutils]]
   - [ ] Customizing Org Mode
 
+** todo files
+   - [[file:todo/org-todo.org::**_Org%20Mode%20Research%20To-Do_*][Org Mode Research To-Do]]
+   - 
+
 ** Educate Lawrence
    - Conda Mode :: He loves conda and the utility it provides. Let's check it
                    out. Matt can help, he has a conda install.

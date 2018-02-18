@@ -1,0 +1,11 @@
+#
+#+TITLE: org-mode research todo
+#
+
+* *_Org Mode Research To-Do_* 
+
+** Pandoc
+- ox-pandoc :: https://github.com/kawabata/ox-pandoc
+- org-mdoe and Pandoc :: https://www.rousette.org.uk/archives/org-mode-and-pandoc/
+-  :: 
+
