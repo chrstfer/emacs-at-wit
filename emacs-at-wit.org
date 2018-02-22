@@ -221,9 +221,10 @@ general purpose, and so useful that I thought they should be in the intro.
 ** TODO Python
 ** TODO \LaTeX
 ** Doing Math (R)
-   Emacs has absolutely amazing R support. Like,
-   phenomenal. Easy. Boom. 
+   Emacs has absolutely amazing R support. Like, phenomenal. Easy. Boom.
+   [[https://en.wikipedia.org/wiki/Emacs_Speaks_Statistics][ESS on Wikipedia]]
 
+   
    Install ess 
    - http://ess.r-project.org/Manual/ess.html
    - https://ess.r-project.org/index.php?Section=download
@@ -244,7 +245,11 @@ general purpose, and so useful that I thought they should be in the intro.
    ;;; end ESS
 #+END_SRC
 
-see [[*Subprocesses][Issues on Mac/Subprocesses]] if your emacs complains about running R.
+   see [[*Subprocesses][Issues on Mac/Subprocesses]] if your emacs complains about running R.
+
+   You can do R (literately) with org as well, and ESS integrates well into this
+   use case, through babel source blocks. You focus an R source block and hit
+   `C-c '` to open that block in an ESS Buffer.
 
 *** Install ess
     1. First, ensure you have R installed. If you think you do, open
