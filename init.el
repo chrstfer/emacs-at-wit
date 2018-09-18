@@ -11,7 +11,9 @@
 ;;;; System Specific Configurations
 ;;   Most of these just need to be here, but tweak around if you will
 (set-variable 'package-user-dir "~/.emacs.d/elisp/plugins") ;; define a user package directory for emacs to use
-(defconst *is-a-mac* (eq system-type 'darwin)) ;; mac os: gives us the shell's PATH
+;; TODO: Windows specific stuff
+;; mac os: gives us the shell's PATH
+(defconst *is-a-mac* (eq system-type 'darwin)) 
 (if *is-a-mac*
     (add-hook 'after-init-hook 'exec-path-from-shell-initialize))
 ;;;; End System Specific Config
@@ -103,7 +105,8 @@
 ;;                 (let ((result  (apply fun args)))
 ;;                   (advice-remove 'fci-mode #'fci-mode-override-advice)
 ;;                   result))))
-;; ;;; The fill column is the max length that emacs will allow a line to be when
+;;
+;;; The fill column is the max length that emacs will allow a line to be when
 ;;; you type M-q on it. It will intelligently (depending on your mode) split
 ;;; longer lines without messing up syntax.
 
@@ -126,7 +129,9 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 ;;; MacOSX Customized Themes
-(set-default 'truncate-lines t)
+(set-default 'truncate-lines t) ;; Default to line truncation mode,
+				;; because if you're coding the other
+				;; modes are not ideal: Use M-q!!
 (defun my/setup-osx-fonts ()
   (interactive)
   (when (eq system-type 'darwin)
