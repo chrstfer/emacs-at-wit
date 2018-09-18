@@ -126,6 +126,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 ;;; MacOSX Customized Themes
+(set-default 'truncate-lines t)
 (defun my/setup-osx-fonts ()
   (interactive)
   (when (eq system-type 'darwin)
