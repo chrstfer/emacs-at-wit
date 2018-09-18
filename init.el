@@ -145,10 +145,8 @@
     ;;(set-default-font "Source Code Pro")
     ;;(set-default-font "Mensch")
     (set-face-attribute 'default nil :height 120)
-    (set-face-attribute 'fixed-pitch nil :height 120)
-
-    ;; Anti-aliasing
-    (setq mac-allow-anti-aliasing t)))
+    (set-face-attribute 'fixed-pitch nil :height 120)        
+    (setq mac-allow-anti-aliasing t))) 
 
 (when (eq system-type 'darwin)
   (add-hook 'after-init-hook #'my/setup-osx-fonts))
@@ -156,7 +154,11 @@
 
 
 ;; The (server-start...) command lets you can open other emacs windows
-(server-start) ;; while sharing the same set of buffers between them. 
+;; while sharing the same set of buffers between them.
+(server-start) 
+
+;; This is where any settings you have set from the "Options->Customize
+;; emacs" settings menu will go. 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

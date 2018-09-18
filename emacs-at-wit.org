@@ -117,8 +117,9 @@
 
    Create a new frame with S-n, delete one with S-w. 
 ** Important Commands
-This section used to be called "Key Commands" but I felt that this was too
-humorous for a technical document.
+This section used to be called "Key Commands" but I felt that this was
+too humorous for a technical document. Note: [[https://jblevins.org/log/kbd][On Mac OS many of these
+work everywhere]].
 *** Moving
     | key | use               |
     | C-n | next line         |
@@ -170,6 +171,7 @@ general purpose, and so useful that I thought they should be in the intro.
        directory using whatever method (probably explorer? idk what
        you people do these days).
     3. 
+
 * Beginner
 ** TODO Configuration and Customization
    Also see ~/.emacs.d/init.el and [[*Configurations][Appendices/Configurations]] 
